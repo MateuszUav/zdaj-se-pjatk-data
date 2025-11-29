@@ -1,0 +1,29 @@
+{
+  "id": "788",
+  "question": "Serwlet przy dostępie do danych w bazie danych wykorzystuje:",
+  "isMarkdown": false,
+  "answers": [
+    {
+      "answer": "serwer WWW Apache",
+      "correct": false,
+      "isMarkdown": false
+    },
+    {
+      "answer": "protokół HTTP",
+      "correct": false,
+      "isMarkdown": false
+    },
+    {
+      "answer": "powiązania bazodanowe,",
+      "correct": true,
+      "isMarkdown": false
+    },
+    {
+      "answer": "powiązania JDBC.",
+      "correct": true,
+      "isMarkdown": false
+    }
+  ],
+  "createdAt": 1764426172267,
+  "$schema": "../../../schemas/subject-patch.json"
+}
