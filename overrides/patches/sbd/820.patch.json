@@ -1,0 +1,37 @@
+Prawidłowa odpowiedź to: **budowie początkowego indeksu na B+-drzewie**.
+
+Oto wyjaśnienie, dlaczego sortowanie jest kluczowe w tym przypadku, oraz analiza pozostałych opcji.
+
+### Dlaczego budowa indeksu B+-drzewa?
+
+B+-drzewo to struktura danych, która z definicji przechowuje klucze w **posortowanej kolejności**. Dzięki temu możliwe jest szybkie wyszukiwanie (np. zakresowe).
+
+Gdy baza danych tworzy taki indeks od zera (budowa początkowa):
+1.  Najpierw **sortuje** wszystkie dane, które mają trafić do indeksu.
+2.  Następnie buduje strukturę drzewa "od dołu", co jest znacznie wydajniejsze niż wstawianie nieposortowanych elementów jeden po drugim (co powodowałoby ciągłe przebudowywanie i podział węzłów drzewa).
+
+
+
+---
+
+### Dlaczego pozostałe odpowiedzi są błędne?
+
+* **Metodzie złączania Hash Join:**
+    Jak sama nazwa wskazuje, ta metoda wykorzystuje **hashowanie** (funkcje skrótu), a nie sortowanie. Baza danych tworzy tablicę haszującą dla jednej z tabel, a następnie "przemiata" drugą tabelę, sprawdzając dopasowania w tej tablicy. Do sortowania używa się innej metody złączania: *Sort-Merge Join*.
+
+* **Wykonywaniu funkcji agregującej AVG:**
+    Obliczenie średniej (`AVG`) wymaga jedynie **zsumowania** wartości i podzielenia ich przez ich liczbę. Kolejność danych nie ma znaczenia dla wyniku matematycznego, więc sortowanie byłoby zbędnym narzutem wydajnościowym (wystarczy jednokrotny odczyt danych - *full scan*).
+
+* **Wykonywaniu klauzuli EXCEPT:**
+    Klauzula `EXCEPT` (różnica zbiorów) zwraca unikalne wiersze z pierwszego zapytania, których nie ma w drugim. Choć *można* to zrealizować poprzez sortowanie (aby wykryć duplikaty), nowoczesne silniki baz danych bardzo często wykorzystują do tego **hashowanie**, ponieważ jest zazwyczaj szybsze przy dużych zbiorach danych. Natomiast w przypadku B+-drzewa posortowanie jest wymogiem strukturalnym, a nie tylko jedną z opcji algorytmicznych.
+
+### Tabela podsumowująca:
+
+| Operacja | Główny mechanizm | Czy wymaga sortowania? |
+| :--- | :--- | :--- |
+| **B+-drzewo** | Struktura uporządkowana | **TAK** (jest kluczowe) |
+| **Hash Join** | Funkcje skrótu (hashing) | NIE |
+| **AVG** | Arytmetyka (suma/licznik) | NIE |
+| **EXCEPT** | Porównanie zbiorów | Czasami (zależy od implementacji), ale częściej hashing |
+
+Czy chciałbyś dowiedzieć się więcej o różnicach między metodami złączania tabel (np. Hash Join vs Nested Loops)?
