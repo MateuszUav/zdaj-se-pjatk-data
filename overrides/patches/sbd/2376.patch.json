@@ -1,0 +1,50 @@
+{
+  "id": "2376",
+  "question": "<span>Jaką wartość dla kolumny \"Salary\" zwróci to zapytanie?</span><br><span>SELECT ename, NVL(sal, 0) \"Salary\" FROM Emp WHERE Sal IS NULL ORDER BY ename;</span>",
+  "isMarkdown": false,
+  "answers": [
+    {
+      "answer": "<table>\n<tbody>\n<tr>\n<td>0</td>\n</tr>\n</tbody>\n</table>",
+      "correct": true,
+      "isMarkdown": false
+    },
+    {
+      "answer": "<span>spację</span>",
+      "correct": false,
+      "isMarkdown": false
+    },
+    {
+      "answer": "<table>\n<tbody>\n<tr>\n<td>nic nie zwróci</td>\n<td>&nbsp;</td>\n</tr>\n</tbody>\n</table>",
+      "correct": false,
+      "isMarkdown": false
+    },
+    {
+      "answer": "<span>null</span>",
+      "correct": false,
+      "isMarkdown": false
+    }
+  ],
+  "createdAt": 1767295125177,
+  "$schema": "../../../schemas/subject-patch.json"
+}
+WYJASNIENIE- chatgpt 5.1 trenowany na wszytkich wykladach i pytaniach:
+
+jaką wartość dla kolumny "Salary" zwróci to zapytanie?
+SELECT ename, NVL(sal, 0) "Salary" FROM Emp WHERE Sal IS NULL ORDER BY ename;
+Thought for 14s
+
+Dla wszystkich wierszy spełniających WHERE Sal IS NULL kolumna "Salary" będzie miała wartość 0.
+
+Wyjaśnienie krok po kroku:
+
+SELECT ename, NVL(sal, 0) "Salary"
+FROM Emp
+WHERE Sal IS NULL
+ORDER BY ename;
+
+
+WHERE Sal IS NULL – wybierasz tylko tych pracowników, którzy mają SAL = NULL.
+
+NVL(sal, 0) – funkcja NVL w Oracle zamienia NULL na wartość podaną jako drugi argument, tutaj 0.
+
+Skoro wszystkie zwrócone wiersze mają sal = NULL, to dla każdego z nich NVL(sal,0) = 0, więc "Salary" = 0.
