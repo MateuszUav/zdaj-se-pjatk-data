@@ -1,0 +1,29 @@
+{
+  "id": "744",
+  "question": "Sekwencja (SEQUENCE) to",
+  "isMarkdown": false,
+  "answers": [
+    {
+      "answer": "Ciąg instrukcji SQL",
+      "correct": false,
+      "isMarkdown": false
+    },
+    {
+      "answer": "Obiekt PL/SQL przechowujący procedury, funkcje i wyzwalacze",
+      "correct": false,
+      "isMarkdown": false
+    },
+    {
+      "answer": "Obiekt przechowywyany w bazie danych, służący do generowania kluczy głównych i jednozancznych",
+      "correct": true,
+      "isMarkdown": false
+    },
+    {
+      "answer": "Typ zmiennej w PL/SQL której użycie generuje autonumerację rekordów tabeli",
+      "correct": false,
+      "isMarkdown": false
+    }
+  ],
+  "createdAt": 1767295349061,
+  "$schema": "../../../schemas/subject-patch.json"
+}
